@@ -61,15 +61,15 @@ export default function CaseStudies() {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-16">
           <div>
             {/* Tag/Badge: • Case Studies */}
-            <div className="inline-flex items-center gap-2.5 mb-4 select-none">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#00BD5F] inline-block shadow-[0_0_8px_rgba(0,189,95,0.6)]" />
-              <span className="text-[17px] font-medium text-[#222222] tracking-normal">
+            <div className="inline-flex items-center gap-[7px] mb-4 select-none">
+              <span className="w-[7px] h-[7px] rounded-full bg-[#00BD5F] inline-block" />
+              <span className="text-[18px] font-normal text-[#212121] tracking-[0.1px] font-archivo">
                 Case Studies
               </span>
             </div>
 
-            {/* Main Heading */}
-            <h2 className="text-4xl sm:text-5xl lg:text-[56px] font-bold text-[#111111] tracking-[-0.02em] leading-[1.12]">
+            {/* Main Heading - Exact 66px Archivo #212121 */}
+            <h2 className="text-[38px] sm:text-[50px] lg:text-[66px] font-semibold text-[#212121] tracking-[-2px] lg:tracking-[-2.7px] leading-[1.1] lg:leading-[1.2] font-archivo">
               Our success stories.
             </h2>
           </div>
@@ -78,17 +78,17 @@ export default function CaseStudies() {
           <div className="shrink-0 pb-1">
             <Link
               href="https://firnas.tech/work/"
-              className="group inline-flex items-center gap-2 text-[16px] sm:text-[17px] font-medium text-[#222222] hover:text-[#00BD5F] transition-colors duration-200"
+              className="group inline-flex items-center gap-[5px] text-[19px] font-normal text-[#202020] hover:text-[#00BD5F] transition-colors duration-200 font-manrope"
             >
               <span>More case studies</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="18"
+                width="16"
+                height="16"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="2.2"
+                strokeWidth="2.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -124,10 +124,10 @@ export default function CaseStudies() {
 
               {/* Title & Metadata */}
               <div className="pt-6 sm:pt-7">
-                <h3 className="text-[22px] sm:text-[25px] font-bold text-[#111111] group-hover:text-[#00BD5F] transition-colors duration-200 tracking-[-0.01em] leading-snug mb-2">
+                <h3 className="text-[22px] sm:text-[26px] font-semibold text-[#202020] group-hover:text-[#00BD5F] transition-colors duration-200 tracking-[-0.01em] leading-snug mb-[5px] font-archivo">
                   {study.title}
                 </h3>
-                <p className="text-[15px] sm:text-[16px] text-[#666666] font-normal tracking-wide">
+                <p className="text-[15px] sm:text-[16px] text-[#202020] font-normal tracking-wide font-archivo">
                   {study.category}
                 </p>
               </div>

@@ -2,6 +2,7 @@
 
 :root {
   --font-primary: var(--font-archivo), sans-serif;
+  --font-badge: var(--font-raleway), sans-serif;
   --color-brand: #00BD5F;
   --color-brand-hover: #18AE69;
 }
@@ -55,12 +56,14 @@ body {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
 }
 
+/* Exact Firnas Badge Pill (.elementor-element-8fc239c) */
 .glass-badge-pill {
-  background-color: rgba(255, 255, 255, 0.11);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.11); /* #FFFFFF1C */
+  border: 1px solid rgba(255, 255, 255, 0.08); /* #FFFFFF14 */
   border-radius: 300px;
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
+  padding: 8px 16px;
 }
 
 /* Subtle grid line overlay like firnas.tech */

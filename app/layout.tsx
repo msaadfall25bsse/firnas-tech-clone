@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Archivo } from "next/font/google";
+import { Archivo, Raleway } from "next/font/google";
 import "./globals.css";
 
 const archivo = Archivo({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-archivo",
+});
+
+const raleway = Raleway({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-raleway",
 });
 
 export const metadata: Metadata = {
@@ -20,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${archivo.variable} dark`}>
+    <html lang="en" className={`${archivo.variable} ${raleway.variable} dark`}>
       <head>
         <link rel="icon" href="/favicon.ico" />
       </head>
