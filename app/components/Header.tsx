@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,25 +9,72 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [applyDropdownOpen, setApplyDropdownOpen] = useState(false);
 
+  // Timer refs to prevent dropdown from abruptly closing when cursor moves to the menu
+  const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const applyTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleDropdownEnter = (type: string) => {
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+      dropdownTimeoutRef.current = null;
+    }
+    setActiveDropdown(type);
+  };
+
+  const handleDropdownLeave = () => {
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+    }
+    dropdownTimeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 350); // 350ms generous buffer so user easily moves mouse to menu links
+  };
+
+  const handleApplyEnter = () => {
+    if (applyTimeoutRef.current) {
+      clearTimeout(applyTimeoutRef.current);
+      applyTimeoutRef.current = null;
+    }
+    setApplyDropdownOpen(true);
+  };
+
+  const handleApplyLeave = () => {
+    if (applyTimeoutRef.current) {
+      clearTimeout(applyTimeoutRef.current);
+    }
+    applyTimeoutRef.current = setTimeout(() => {
+      setApplyDropdownOpen(false);
+    }, 350);
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setActiveDropdown(null);
       setApplyDropdownOpen(false);
     };
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
+      if (applyTimeoutRef.current) clearTimeout(applyTimeoutRef.current);
+    };
   }, []);
 
   return (
-    <header className="absolute top-0 left-0 right-0 z-50 w-full pt-[15px] pb-0">
+    <header 
+      className="absolute top-0 left-0 right-0 z-50 w-full pt-[15px] pb-0"
+      onMouseLeave={handleDropdownLeave}
+    >
       
       {/* 1. ABOUT DROPDOWN PANEL (FULL VIEWPORT WIDTH) */}
       {activeDropdown === "about" && (
         <div 
-          className="absolute left-0 right-0 top-full mt-[30px] w-full bg-white text-black shadow-[0px_64px_55px_-29px_rgba(0,0,0,0.18)] z-50 animate-in fade-in duration-200"
-          onMouseEnter={() => setActiveDropdown("about")}
-          onMouseLeave={() => setActiveDropdown(null)}
+          className="absolute left-0 right-0 top-full pt-4 w-full z-50 animate-in fade-in duration-200"
+          onMouseEnter={() => handleDropdownEnter("about")}
+          onMouseLeave={handleDropdownLeave}
         >
+          {/* Bridge overlay to ensure mouse never leaves hover zone */}
+          <div className="w-full bg-white text-black shadow-[0px_64px_55px_-29px_rgba(0,0,0,0.18)] border-t border-black/5">
           <div className="max-w-[1300px] mx-auto px-6 sm:px-10 py-10">
             <div className="grid grid-cols-12 gap-6 items-start">
               
@@ -125,17 +172,20 @@ export default function Header() {
 
             </div>
           </div>
+          </div>
         </div>
       )}
 
       {/* 2. OUR SERVICES DROPDOWN PANEL (EXACT MATCHING FIRST IMAGE & FIRNAS.TECH) */}
       {activeDropdown === "services" && (
         <div 
-          className="absolute left-0 right-0 top-full mt-[30px] w-full bg-white text-black shadow-[0px_64px_55px_-29px_rgba(0,0,0,0.18)] z-50 animate-in fade-in duration-200"
-          onMouseEnter={() => setActiveDropdown("services")}
-          onMouseLeave={() => setActiveDropdown(null)}
+          className="absolute left-0 right-0 top-full pt-4 w-full z-50 animate-in fade-in duration-200"
+          onMouseEnter={() => handleDropdownEnter("services")}
+          onMouseLeave={handleDropdownLeave}
         >
-          <div className="max-w-[1300px] mx-auto px-6 sm:px-10 py-10">
+          {/* Bridge overlay to ensure mouse never leaves hover zone */}
+          <div className="w-full bg-white text-black shadow-[0px_64px_55px_-29px_rgba(0,0,0,0.18)] border-t border-black/5">
+            <div className="max-w-[1300px] mx-auto px-6 sm:px-10 py-10">
             <div className="grid grid-cols-12 gap-8 items-start">
               
               {/* Left Column (Col 1-3): Services Title with Green Arrow + Technologies Gallery */}
@@ -322,19 +372,20 @@ export default function Header() {
 
             </div>
           </div>
+          </div>
         </div>
       )}
 
       {/* Main Pill Navbar Container matching .elementor-element-01d4d2e */}
-      <div className="max-w-[1300px] mx-auto px-4 sm:px-6">
-        <div className="firnas-header-glass py-[14px] flex items-center justify-between transition-all duration-300">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
+        <div className="firnas-header-glass min-h-[80px] flex items-center justify-between transition-all duration-300">
           
-          {/* Left Group: Logo + Nav Links directly together */}
-          <div className="flex items-center gap-6 xl:gap-8">
-            {/* Logo Section */}
-            <div className="shrink-0 flex items-center">
-              <Link href="/" className="inline-block">
-                <div className="relative w-[170px] sm:w-[195px] md:w-[215px] h-[36px] sm:h-[70px]">
+          {/* Container 1 & 2: Left Group containing Logo and Navbar Links together */}
+          <div className="flex items-center flex-1">
+            {/* Logo Section (.elementor-element-30aab0d) */}
+            <div className="shrink-0 flex items-center pl-2 sm:pl-3">
+              <Link href="/" className="inline-block py-1">
+                <div className="relative w-[170px] sm:w-[190px] h-[32px] sm:h-[36px]">
                   <Image
                     src="/firnas-logo.png"
                     alt="Firnas.tech"
@@ -346,23 +397,23 @@ export default function Header() {
               </Link>
             </div>
 
-            {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center text-[16px] text-white font-normal font-sans">
+            {/* Navigation Menu (.elementor-element-3be3ff7) shifted left, starting right after logo */}
+            <nav className="hidden lg:flex items-center text-[16px] text-white font-normal font-sans ml-8 xl:ml-12">
               <Link
                 href="/"
-                className="text-[#00BD5F] hover:text-[#18AE69] mx-[14px] transition-colors py-2"
+                className="text-[#00BD5F] hover:text-[#18AE69] mx-[12px] xl:mx-[14px] transition-colors py-2 font-normal"
               >
                 Home
               </Link>
 
               {/* About Nav Item */}
               <div
-                onMouseEnter={() => setActiveDropdown("about")}
-                onMouseLeave={() => setActiveDropdown(null)}
+                onMouseEnter={() => handleDropdownEnter("about")}
+                onMouseLeave={handleDropdownLeave}
               >
                 <button
                   type="button"
-                  className={`flex items-center mx-[14px] transition-colors py-2 focus:outline-none cursor-pointer ${
+                  className={`flex items-center mx-[12px] xl:mx-[14px] transition-colors py-2 focus:outline-none cursor-pointer font-normal ${
                     activeDropdown === "about" ? "text-[#18AE69]" : "text-white hover:text-[#18AE69]"
                   }`}
                   onClick={() =>
@@ -371,8 +422,8 @@ export default function Header() {
                 >
                   <span>About</span>
                   <svg
-                    className={`w-3.5 h-3.5 ml-2 transition-transform duration-200 ${
-                      activeDropdown === "about" ? "rotate-180 text-[#18AE69]" : "text-white/80"
+                    className={`w-3.5 h-3.5 ml-1.5 transition-transform duration-200 ${
+                      activeDropdown === "about" ? "rotate-180 text-[#18AE69]" : "text-white"
                     }`}
                     fill="none"
                     stroke="currentColor"
@@ -390,12 +441,12 @@ export default function Header() {
 
               {/* Our Services Nav Item */}
               <div
-                onMouseEnter={() => setActiveDropdown("services")}
-                onMouseLeave={() => setActiveDropdown(null)}
+                onMouseEnter={() => handleDropdownEnter("services")}
+                onMouseLeave={handleDropdownLeave}
               >
                 <button
                   type="button"
-                  className={`flex items-center mx-[14px] transition-colors py-2 focus:outline-none cursor-pointer ${
+                  className={`flex items-center mx-[12px] xl:mx-[14px] transition-colors py-2 focus:outline-none cursor-pointer font-normal ${
                     activeDropdown === "services" ? "text-[#18AE69]" : "text-white hover:text-[#18AE69]"
                   }`}
                   onClick={() =>
@@ -404,8 +455,8 @@ export default function Header() {
                 >
                   <span>Our Services</span>
                   <svg
-                    className={`w-3.5 h-3.5 ml-2 transition-transform duration-200 ${
-                      activeDropdown === "services" ? "rotate-180 text-[#18AE69]" : "text-white/80"
+                    className={`w-3.5 h-3.5 ml-1.5 transition-transform duration-200 ${
+                      activeDropdown === "services" ? "rotate-180 text-[#18AE69]" : "text-white"
                     }`}
                     fill="none"
                     stroke="currentColor"
@@ -423,26 +474,26 @@ export default function Header() {
 
               <Link
                 href="https://firnas.tech/work/"
-                className="hover:text-[#18AE69] text-white mx-[14px] transition-colors py-2"
+                className="hover:text-[#18AE69] text-white mx-[12px] xl:mx-[14px] transition-colors py-2 font-normal"
               >
                 Work
               </Link>
 
               <Link
                 href="https://firnas.tech/our-services/staff-augmentation/"
-                className="hover:text-[#18AE69] text-white mx-[14px] transition-colors py-2"
+                className="hover:text-[#18AE69] text-white mx-[12px] xl:mx-[14px] transition-colors py-2 font-normal"
               >
                 Staff Augmentation
               </Link>
             </nav>
           </div>
 
-          {/* Right Action: Apply Now Button Pill that fits inside the header bar */}
-          <div className="hidden sm:flex items-center relative shrink-0 my-auto mr-[5px]">
+          {/* Container 3: Right Action Pill (.elementor-element-af72a80 & b0000ba: ~35% desktop) */}
+          <div className="hidden sm:flex items-center relative shrink-0 mr-[10px]">
             <div
               className="relative"
-              onMouseEnter={() => setApplyDropdownOpen(true)}
-              onMouseLeave={() => setApplyDropdownOpen(false)}
+              onMouseEnter={handleApplyEnter}
+              onMouseLeave={handleApplyLeave}
             >
               <button
                 type="button"
@@ -469,19 +520,25 @@ export default function Header() {
 
               {/* Apply Now dropdown matching .elementor-nav-menu--dropdown */}
               {applyDropdownOpen && (
-                <div className="absolute right-0 top-full mt-[18px] w-56 bg-white text-black rounded-lg py-1 shadow-[0px_0px_90px_rgba(0,0,0,0.4)] z-50 animate-in fade-in zoom-in-95 duration-150 border border-black/10">
-                  <Link
-                    href="https://firnas.tech/apply-developer/"
-                    className="block px-5 py-3.5 text-[15px] font-sans text-gray-800 hover:text-black hover:bg-gray-100 transition-colors border-b border-black/10 first:rounded-t-lg"
-                  >
-                    Apply as a Developer
-                  </Link>
-                  <Link
-                    href="https://firnas.tech/hire-developer/"
-                    className="block px-5 py-3.5 text-[15px] font-sans text-gray-800 hover:text-black hover:bg-gray-100 transition-colors last:rounded-b-lg"
-                  >
-                    Hire Developer
-                  </Link>
+                <div 
+                  className="absolute right-0 top-full pt-3 z-50 animate-in fade-in zoom-in-95 duration-150"
+                  onMouseEnter={handleApplyEnter}
+                  onMouseLeave={handleApplyLeave}
+                >
+                  <div className="w-56 bg-white text-black rounded-lg py-1 shadow-[0px_0px_90px_rgba(0,0,0,0.4)] border border-black/10">
+                    <Link
+                      href="https://firnas.tech/apply-developer/"
+                      className="block px-5 py-3.5 text-[15px] font-sans text-gray-800 hover:text-black hover:bg-gray-100 transition-colors border-b border-black/10 first:rounded-t-lg"
+                    >
+                      Apply as a Developer
+                    </Link>
+                    <Link
+                      href="https://firnas.tech/hire-developer/"
+                      className="block px-5 py-3.5 text-[15px] font-sans text-gray-800 hover:text-black hover:bg-gray-100 transition-colors last:rounded-b-lg"
+                    >
+                      Hire Developer
+                    </Link>
+                  </div>
                 </div>
               )}
             </div>

@@ -22,6 +22,7 @@ body {
   -webkit-backdrop-filter: blur(5px);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   padding: 5px 5px 5px 20px;
+  height: 80px;
 }
 
 /* Exact Firnas Green Apply Now Pill (.elementor-element-b0000ba) */

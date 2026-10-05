@@ -10,7 +10,7 @@ export default function Hero() {
       */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none flex items-center justify-center">
         <video
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full w-auto h-auto object-cover"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[calc(50%+10px)] min-w-full min-h-full w-auto h-auto object-cover"
           autoPlay
           muted
           playsInline
@@ -50,31 +50,31 @@ export default function Hero() {
       {/* Layer 6: Hero Content */}
       <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-center text-center">
         
-        {/* Badge Pill: We make digital (and magical).... */}
-        <div className="glass-badge-pill px-5 py-2 mb-8 flex items-center gap-2.5 shadow-[0_4px_24px_rgba(0,0,0,0.5)] transition-all hover:border-[#00BD5F]/40 cursor-default">
+        {/* Badge Pill: We make digital (and magical).... matching elementor-element-8fc239c */}
+        <div className="glass-badge-pill px-4 sm:px-5 py-2 mb-8 sm:mb-10 flex items-center gap-2.5 shadow-[0_4px_24px_rgba(0,0,0,0.5)] transition-all hover:border-[#00BD5F]/40 cursor-default">
           <span className="w-2 h-2 rounded-full bg-[#00BD5F] animate-pulse shadow-[0_0_10px_#00BD5F]" />
-          <span className="text-[13px] sm:text-[14px] md:text-[15px] font-normal tracking-wide text-white/90">
+          <span className="text-[13px] sm:text-[14px] font-normal tracking-normal text-white/90">
             We make digital (and magical)....
           </span>
         </div>
 
-        {/* Main Hero Headline */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[65px] font-semibold text-white tracking-[-1.5px] leading-[1.18] max-w-4xl mb-6 font-sans">
-          <span className="text-[#00BD5F] inline-block font-semibold">Helping Companies</span> Scale with World Class Technology
+        {/* Main Hero Headline (.elementor-element-de861e8): 65px font-weight: 600, line-height: 78px, letter-spacing: -1.5px */}
+        <h1 className="text-[38px] sm:text-[52px] md:text-[60px] lg:text-[65px] font-semibold text-white tracking-[-1.5px] leading-[1.14] sm:leading-[1.18] lg:leading-[78px] max-w-[980px] mb-6">
+          <span className="text-[#00BD5F] font-semibold">Helping Companies</span> Scale with World Class Technology
         </h1>
 
-        {/* Hero Subtitle Description */}
-        <p className="text-base sm:text-lg md:text-[22px] font-light text-white/80 leading-[1.6] max-w-3xl mb-10 font-sans tracking-wide">
+        {/* Hero Subtitle Description (.elementor-element-e0873f3): 24px (desktop) / 18px (mobile), font-weight: 300, line-height: 39px */}
+        <p className="text-[17px] sm:text-[20px] lg:text-[23px] font-light text-white/80 leading-[1.5] sm:leading-[1.6] lg:leading-[38px] max-w-[840px] mb-10">
           We design, develop, and deliver comprehensive software, prioritizing user experience, engagement, and intelligent solutions for diverse platforms.
         </p>
 
-        {/* Call to Action Buttons */}
-        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-5 w-full">
+        {/* Call to Action Buttons (.elementor-element-6431c2b & f6d0aaf): 18px font-weight: 400, padding: 18px 32px */}
+        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 w-full">
           
           {/* About Us Button */}
           <Link
             href="https://firnas.tech/about/"
-            className="group inline-flex items-center justify-center gap-2.5 bg-[#00BD5F] hover:bg-white text-white hover:text-black font-normal text-[17px] sm:text-[18px] px-8 py-3.5 sm:py-4 rounded-full transition-all duration-300 shadow-[0_4px_25px_rgba(0,189,95,0.4)] hover:shadow-[0_4px_30px_rgba(255,255,255,0.4)]"
+            className="group inline-flex items-center justify-center gap-2 bg-[#00BD5F] hover:bg-white text-white hover:text-black font-normal text-[17px] sm:text-[18px] px-7 sm:px-8 py-3.5 sm:py-4 rounded-full transition-all duration-300 shadow-[0_4px_25px_rgba(0,189,95,0.35)] hover:shadow-[0_4px_30px_rgba(255,255,255,0.4)]"
           >
             <span>About Us</span>
             <svg
@@ -91,7 +91,7 @@ export default function Hero() {
           {/* Contact Us Button */}
           <Link
             href="https://firnas.tech/contact/"
-            className="group inline-flex items-center justify-center gap-2.5 bg-transparent hover:bg-white text-white hover:text-black font-normal text-[17px] sm:text-[18px] px-8 py-3.5 sm:py-4 rounded-full border-2 border-white/80 hover:border-white transition-all duration-300 backdrop-blur-sm"
+            className="group inline-flex items-center justify-center gap-2 bg-transparent hover:bg-white text-white hover:text-black font-normal text-[17px] sm:text-[18px] px-7 sm:px-8 py-3.5 sm:py-4 rounded-full border border-white/70 hover:border-white transition-all duration-300 backdrop-blur-sm"
           >
             <span>Contact Us</span>
             <svg
