@@ -105,10 +105,10 @@ export default function GlobalPresence() {
           {locations.map((item, idx) => (
             <div
               key={idx}
-              className="flex flex-col items-start p-[10px] rounded-[16px] border border-white/[0.12] bg-black/30 backdrop-blur-[6px] transition-all duration-300 hover:border-[#00BD5F] hover:bg-black/45 hover:-translate-y-1 shadow-[0_4px_20px_rgba(0,0,0,0.3)] min-h-[220px]"
+              className="flex flex-col items-start p-[24px] lg:p-[30px] rounded-[16px] border border-white/[0.12] bg-transparent transition-all duration-300 hover:border-[#00BD5F] hover:bg-black/45 shadow-sm"
             >
               {/* Flag Image */}
-              <div className="relative w-10 h-10 mb-4 rounded-full overflow-hidden shadow-md">
+              <div className="relative w-[36px] h-[36px] mb-5 rounded-full overflow-hidden shadow-md">
                 <Image
                   src={item.flag}
                   alt={item.country}
@@ -118,15 +118,15 @@ export default function GlobalPresence() {
               </div>
 
               {/* Title & Role */}
-              <h3 className="text-[16px] font-bold text-white leading-tight mb-2">
-                {item.country}{" "}
-                <span className="text-[13px] font-normal text-white/60 block sm:inline">
+              <h3 className="text-[17px] font-bold text-white leading-tight mb-2 flex flex-col xl:flex-row xl:items-center gap-1 xl:gap-1.5 w-full font-archivo">
+                <span>{item.country}</span>
+                <span className="text-[13px] font-normal text-white/60 font-archivo">
                   {item.role}
                 </span>
               </h3>
 
               {/* Address */}
-              <p className="text-[13px] text-white/65 leading-[1.5] mt-auto font-normal">
+              <p className="text-[14px] text-white/65 leading-[1.6] font-normal font-archivo">
                 {item.address}
               </p>
             </div>
