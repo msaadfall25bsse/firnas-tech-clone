@@ -45,7 +45,7 @@ export default function TalentNetwork() {
   return (
     <section
       id="talent-network"
-      className="relative w-full text-white py-24 sm:py-28 px-4 sm:px-8 lg:px-14 overflow-hidden bg-[#050b08] bg-cover bg-center bg-no-repeat"
+      className="relative w-full text-white py-24 sm:py-28 px-[6px] sm:px-[22px] lg:px-[46px] overflow-hidden bg-[#050b08] bg-cover bg-center bg-no-repeat"
       style={{
         backgroundImage: `url('/Services-bg-section.jpg')`,
       }}
@@ -73,15 +73,15 @@ export default function TalentNetwork() {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-16">
           <div>
             {/* Tag/Badge: • Discover 150+ Top Professionals */}
-            <div className="inline-flex items-center gap-2 mb-3.5 select-none">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#00BD5F] inline-block shadow-[0_0_8px_rgba(0,189,95,0.7)]" />
-              <span className="text-[16px] font-medium text-white/90">
+            <div className="inline-flex items-center gap-[7px] mb-4 select-none">
+              <span className="w-[7px] h-[7px] rounded-full bg-[#00BD5F] inline-block" />
+              <span className="text-[18px] font-normal text-[#FFFFFF] font-archivo">
                 Discover 150+ Top Professionals
               </span>
             </div>
 
-            {/* Heading */}
-            <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-bold text-white tracking-[-0.02em] leading-tight">
+            {/* Heading - Exact 50px Archivo */}
+            <h2 className="text-[32px] sm:text-[40px] lg:text-[50px] font-semibold text-[#FFFFFF] tracking-[-2px] lg:tracking-[-2.7px] leading-[1.2] font-archivo">
               Meet Our Talent Network
             </h2>
           </div>
@@ -90,7 +90,7 @@ export default function TalentNetwork() {
           <div className="shrink-0 pb-1">
             <Link
               href="https://firnas.tech/apply-developer/"
-              className="inline-flex items-center justify-center bg-[#00BD5F] hover:bg-[#18AE69] text-white font-medium text-[16px] px-8 py-3.5 rounded-full transition-all duration-300 shadow-[0_4px_20px_rgba(0,189,95,0.35)] hover:shadow-[0_6px_25px_rgba(0,189,95,0.5)] hover:-translate-y-0.5 active:translate-y-0"
+              className="inline-flex items-center justify-center bg-[#00BD5F] hover:bg-[#18AE69] text-[#FFFFFF] font-normal text-[17px] font-archivo px-8 py-[18px] rounded-[300px] transition-all duration-300 shadow-[0_4px_20px_rgba(0,189,95,0.35)] hover:shadow-[0_6px_25px_rgba(0,189,95,0.5)] hover:-translate-y-0.5 active:translate-y-0"
             >
               Apply as a Developer
             </Link>
@@ -116,13 +116,13 @@ export default function TalentNetwork() {
                 />
               </div>
 
-              {/* Name */}
-              <h3 className="text-[21px] font-bold text-white tracking-tight leading-snug mb-1">
+              {/* Name - Exact 21px Raleway */}
+              <h3 className="text-[21px] font-semibold text-[#FFFFFF] tracking-tight leading-snug mb-1 font-raleway">
                 {member.name}
               </h3>
 
-              {/* Role */}
-              <p className="text-[14px] text-white/65 font-normal mb-6">
+              {/* Role - Exact 13px Raleway */}
+              <p className="text-[13px] text-[#FFFFFF] font-normal mb-6 font-raleway">
                 {member.role}
               </p>
 
