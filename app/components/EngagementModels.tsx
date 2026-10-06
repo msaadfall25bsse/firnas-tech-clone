@@ -10,7 +10,7 @@ export default function EngagementModels() {
   return (
     <section
       id="engagement-models"
-      className="relative w-full bg-white text-[#111111] py-20 md:py-28 px-4 sm:px-8 lg:px-14 overflow-hidden"
+      className="relative w-full bg-white text-[#111111] pt-[70px] pb-20 md:pt-[102px] md:pb-28 px-4 sm:px-8 lg:px-14 overflow-hidden"
     >
       {/* 
         Subtle light checkered grid background matching Firnas.tech White-BG pattern
