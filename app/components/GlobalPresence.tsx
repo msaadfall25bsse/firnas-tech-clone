@@ -54,7 +54,7 @@ export default function GlobalPresence() {
   return (
     <section
       id="global-presence"
-      className="relative w-full text-white py-24 sm:py-28 px-4 sm:px-8 lg:px-14 overflow-hidden bg-[#050b08] bg-cover bg-center bg-no-repeat"
+      className="relative w-full text-white py-24 sm:py-28 px-[11px] sm:px-[27px] lg:px-[51px] overflow-hidden bg-[#050b08] bg-cover bg-center bg-no-repeat"
       style={{
         backgroundImage: `url('/Services-bg-section.jpg')`,
       }}
@@ -79,22 +79,22 @@ export default function GlobalPresence() {
 
       <div className="relative z-10 max-w-[1340px] mx-auto">
         {/* Section Header */}
-        <div className="max-w-3xl mb-12 sm:mb-16">
+        <div className="max-w-[750px] mb-12 sm:mb-16">
           {/* Badge: • Our Global Presence */}
-          <div className="inline-flex items-center gap-2.5 mb-4 select-none">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#00BD5F] inline-block shadow-[0_0_8px_rgba(0,189,95,0.7)]" />
-            <span className="text-[16px] font-medium text-white/90">
+          <div className="inline-flex items-center gap-[7px] mb-4 select-none">
+            <span className="w-[7px] h-[7px] rounded-full bg-[#00BD5F] inline-block" />
+            <span className="text-[18px] font-normal text-[#FFFFFF] tracking-[0.1px] font-archivo">
               Our Global Presence
             </span>
           </div>
 
-          {/* Heading */}
-          <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-bold text-white tracking-[-0.02em] leading-[1.12] mb-5">
+          {/* Heading - Exact 50px Archivo */}
+          <h2 className="text-[32px] sm:text-[40px] lg:text-[50px] font-semibold text-[#FFFFFF] tracking-[-2px] lg:tracking-[-2.7px] leading-[1.2] lg:leading-[58px] mb-5 font-archivo">
             We&apos;re a Global Team of Innovators
           </h2>
 
-          {/* Paragraph */}
-          <p className="text-[16px] sm:text-[18px] text-white/75 font-light leading-[1.65]">
+          {/* Paragraph - Exact 20px Manrope */}
+          <p className="text-[17px] sm:text-[19px] lg:text-[20px] text-[#FFFFFF] font-light leading-[28px] lg:leading-[33px] font-manrope">
             Navigate complex digital initiatives with confidence, propelling your
             journey towards innovation and growth.
           </p>
@@ -105,7 +105,7 @@ export default function GlobalPresence() {
           {locations.map((item, idx) => (
             <div
               key={idx}
-              className="flex flex-col items-start p-6 rounded-[16px] border border-white/[0.12] bg-black/30 backdrop-blur-[6px] transition-all duration-300 hover:border-[#00BD5F] hover:bg-black/45 hover:-translate-y-1 shadow-[0_4px_20px_rgba(0,0,0,0.3)] min-h-[220px]"
+              className="flex flex-col items-start p-[10px] rounded-[16px] border border-white/[0.12] bg-black/30 backdrop-blur-[6px] transition-all duration-300 hover:border-[#00BD5F] hover:bg-black/45 hover:-translate-y-1 shadow-[0_4px_20px_rgba(0,0,0,0.3)] min-h-[220px]"
             >
               {/* Flag Image */}
               <div className="relative w-10 h-10 mb-4 rounded-full overflow-hidden shadow-md">
