@@ -41,27 +41,14 @@ export default function CaseStudies() {
   return (
     <section
       id="case-studies"
-      className="relative w-full bg-white text-[#111111] py-20 md:py-28 px-4 sm:px-8 lg:px-14 overflow-hidden"
+      className="relative w-full bg-white text-[#111111] py-[80px] md:py-[110px] px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
-      {/* 
-        Subtle light checkered grid background matching Firnas.tech
-      */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-40 bg-[size:52px_52px]"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, rgba(0, 189, 95, 0.07) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(0, 189, 95, 0.07) 1px, transparent 1px)
-          `,
-        }}
-      />
-
-      <div className="relative z-10 max-w-[1340px] mx-auto">
+      <div className="relative z-10 max-w-[1240px] mx-auto">
         {/* Top Header Row */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-16">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-[40px] sm:mb-[50px]">
           <div>
             {/* Tag/Badge: • Case Studies */}
-            <div className="inline-flex items-center gap-[7px] mb-4 select-none">
+            <div className="inline-flex items-center gap-[7px] mb-[5px] select-none">
               <span className="w-[7px] h-[7px] rounded-full bg-[#00BD5F] inline-block" />
               <span className="text-[18px] font-normal text-[#212121] tracking-[0.1px] font-archivo">
                 Case Studies
